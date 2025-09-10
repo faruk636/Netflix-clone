@@ -3,7 +3,7 @@
     top: 0;
     display: flex;
     background-color: rgb(20, 20, 20);
-    /* background-color: transparent; */
+    background-color: transparent;
     align-items: center;
     justify-content: center;
     height: 10vh;
