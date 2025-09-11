@@ -14,9 +14,9 @@ const Banner = () => {
             try {
                 const {data} = await axios(requests.fetchNeflixOriginals) 
                 setMovie(data.results[Math.floor(Math.random() * data.results.length)])
-                console.log(
-                  data.results[Math.floor(Math.random() * data.results.length)]
-                );
+                // console.log(
+                //   data.results[Math.floor(Math.random() * data.results.length)]
+                // );
             } catch (error) {
                 console.log(error)
             }
