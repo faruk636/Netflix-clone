@@ -11,7 +11,6 @@ const Row = ({ title, fetchUrl,isLargeRow }) => {
     const fetchMovies = async () => {
       try {
         const { data } = await axiosInstance(fetchUrl);
-        console.log(data)
         setMovies(data.results)
       } catch (error) {
         console.log(error);

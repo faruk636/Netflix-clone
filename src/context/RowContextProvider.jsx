@@ -16,10 +16,10 @@ const RowContextProvider = ({children}) => {
           if (!url) {
             alert("Trailer not found");
           } else {
-            console.log(url);
+            // console.log(url);
             const urlParm = new URLSearchParams(new URL(url).search);
-            console.log(urlParm);
-            console.log(urlParm.get("v"));
+            // console.log(urlParm);
+            // console.log(urlParm.get("v"));
             setTrailerUrl(urlParm.get("v"));
             scrollTo({ top: 400, behavior: "smooth" });
           }
