@@ -21,7 +21,7 @@ const RowContextProvider = ({children}) => {
             console.log(urlParm);
             console.log(urlParm.get("v"));
             setTrailerUrl(urlParm.get("v"));
-            scrollTo(0,500);
+            scrollTo({ top: 400, behavior: "smooth" });
           }
         }
       );
