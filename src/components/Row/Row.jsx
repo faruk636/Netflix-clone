@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './row.css'
 import axiosInstance from '../../utiles/axios'
-import YouTube from 'react-youtube';
-import movieTrailer from 'movie-trailer';
+import { RowContext } from '../../context/RowContextProvider';
 
 const Row = ({ title, fetchUrl,isLargeRow }) => {
   const [movies, setMovies] = useState([]);
-  const [trailerUrl,setTrailerUrl] = useState('')
+  const { handleTrailer } = useContext(RowContext);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -24,35 +23,9 @@ const Row = ({ title, fetchUrl,isLargeRow }) => {
   const baseUrl = 'https://image.tmdb.org/t/p/original'
 
 
-  const handleTrailer = (movie)=>{
+  
 
  
-    setTrailerUrl('')
-  
-    movieTrailer(movie?.title||movie?.name||movie?.original_title)
-    .then((url)=>{
-      if (!url) {
-        alert('Trailer not found')
-      } else {
-        console.log(url)
-      const urlParm= new URLSearchParams(new URL(url).search)
-      console.log(urlParm)
-      console.log(urlParm.get('v'))
-      setTrailerUrl(urlParm.get("v"));
-      }
-      
-    })
-  
-
-  }
-
-    const opts = {
-      height: '390',
-      width: '100%',
-      playerVars: {
-        autoplay: 1,
-      }
-    }
 
   return (
     <div className="row">
@@ -74,9 +47,6 @@ const Row = ({ title, fetchUrl,isLargeRow }) => {
             className={`row-poster ${isLargeRow && "row-posterLarge"}`}
           ></img>
         ))}
-      </div>
-      <div style={{padding:"40px"}}>
-        {trailerUrl&& <YouTube videoId={trailerUrl} opts={opts}  />}
       </div>
     </div>
   );

@@ -1,13 +1,27 @@
-import {useState } from 'react'
+import {useContext, useState } from 'react'
 import Row from '../Row/Row'
 import './rowList.css'
 import requests from '../../utiles/request'
+import YouTube from 'react-youtube';
+import { RowContext } from '../../context/RowContextProvider';
 
 
 const RowList = () => {
+  const { trailerUrl } = useContext(RowContext);
+
+     const opts = {
+       height: "390",
+       width: "100%",
+       playerVars: {
+         autoplay: 1,
+       },
+     };
 
   return (
     <>
+      <div style={{ padding: "40px" }}>
+        {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+      </div>
       <Row
         title="NETFLIX ORIGINALS"
         fetchUrl={requests.fetchNeflixOriginals}
